@@ -1,0 +1,102 @@
+
+ --setclipboard(tostring(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame))
+
+function SendMessage(url, message)
+    local http = game:GetService("HttpService")
+    local headers = {
+        ["Content-Type"] = "application/json"
+    }
+    local data = {
+        ["content"] = message
+    }
+    local body = http:JSONEncode(data)
+    local response = request({
+        Url = url,
+        Method = "POST",
+        Headers = headers,
+        Body = body
+    })
+    print("Sent")
+end
+
+function SendMessageEMBED(url, embed)
+    local http = game:GetService("HttpService")
+    local headers = {
+        ["Content-Type"] = "application/json"
+    }
+    local data = {
+        ["embeds"] = {
+            {
+                ["title"] = embed.title,
+                ["description"] = embed.description,
+                ["color"] = embed.color,
+                ["fields"] = embed.fields,
+                ["footer"] = {
+                    ["text"] = embed.footer.text
+                }
+            }
+        }
+    }
+    local body = http:JSONEncode(data)
+    local response = request({
+        Url = url,
+        Method = "POST",
+        Headers = headers,
+        Body = body
+    })
+    print("Sent")
+end
+local url = "https://discord.com/api/webhooks/1231547172982493256/c6TuJecX00N-8YexTEixYMvohb7cSrFxVbIlGvB0FvjIPtH38IGghjp1N8WytOxkC1Qa"
+local id = "1231544354829631579" 
+
+getgenv().Ammount  = ""
+getgenv().Load = true 
+while task.wait(.5) do
+     if Load == true then 
+local items = game.Players.LocalPlayer.PlayerGui.MainGui.HUD.SidePanel.Buttons.Items
+ if items.Button:FindFirstChild("Notification") then 
+  for i,v in pairs(items:GetDescendants()) do 
+	 if v:IsA("Frame") and v.Name == "Notification" and v:FindFirstChild("Amount") then 
+	getgenv().Ammount = v.Amount.Text
+     end 
+    end 
+
+ SendMessage(url, "Hey <@&" .. tostring(id) .. "> , You just got a capsule!")
+local embed = {
+    ["title"] = "Capsule Drops [ Coded by DatNguyen ]",
+    ["description"] = "Username: ||" .. game.Players.LocalPlayer.Name .. "||" ,
+    ["color"] = 65280,
+    ["fields"] = {
+		{
+            ["name"] = "**Capsule Name:**",
+            ["value"] = "Sin Summon"
+        },
+        {
+            ["name"] = "**Capsule Amount Dropped:**",
+            ["value"] =  getgenv().Ammount
+        },
+        {
+            ["name"] = "**World:**",
+            ["value"] = game:GetService("Players").LocalPlayer.World.Value
+        }
+    },
+    ["footer"] = {
+        ["text"] = "script duoc viet boi DatNguyen"
+    }
+}
+SendMessageEMBED(url, embed)
+wait(.2)
+for i,v in pairs(items:GetDescendants()) do 
+    if v:IsA("Frame") and v.Name == "Notification" then 
+  v:Destroy()
+    end 
+   end 
+   getgenv().Ammount  = ""
+elseif not  items.Button:FindFirstChild("Notification") then 
+   --print("not found. no detected.")
+end
+else
+    wait()
+    break
+end
+end
