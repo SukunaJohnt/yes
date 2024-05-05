@@ -47,7 +47,7 @@ function SendMessageEMBED(url, embed)
     print("Sent")
 end
 local url = "https://discord.com/api/webhooks/1236547617886961704/l3qt4cl03lha8WDC3S_1PRjDH-T21yfAUiANpDNo4vS1-dxo8GFlONm7K-KKADnqcQVU"
-local id = "1129367971882598502" 
+local id = "1231544354829631579" 
 
 getgenv().Ammount  = ""
 getgenv().Load = true 
