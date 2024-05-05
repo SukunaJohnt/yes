@@ -46,8 +46,8 @@ function SendMessageEMBED(url, embed)
     })
     print("Sent")
 end
-local url = "https://discord.com/api/webhooks/1231547172982493256/c6TuJecX00N-8YexTEixYMvohb7cSrFxVbIlGvB0FvjIPtH38IGghjp1N8WytOxkC1Qa"
-local id = "1231544354829631579" 
+local url = "https://discord.com/api/webhooks/1236547617886961704/l3qt4cl03lha8WDC3S_1PRjDH-T21yfAUiANpDNo4vS1-dxo8GFlONm7K-KKADnqcQVU"
+local id = "1129367971882598502" 
 
 getgenv().Ammount  = ""
 getgenv().Load = true 
@@ -69,7 +69,7 @@ local embed = {
     ["fields"] = {
 		{
             ["name"] = "**Capsule Name:**",
-            ["value"] = "Sin Summon"
+            ["value"] = "Rimuru Summon"
         },
         {
             ["name"] = "**Capsule Amount Dropped:**",
